@@ -3,7 +3,7 @@
 
 Desafio estágio 8 do curso Rocketseat.
 
-Aplicação em Node.js com cadastro de usuário e filmes vinculado a ele, com algumas informações, como: título, descrição, nota e tags relacionadas ao filme.
+Aplicação em Node.js com cadastro de usuário e filmes vinculados a ele, com algumas informações, como: título, descrição, nota e tags relacionadas ao filme.
 
 
 ## Tecnologias

@@ -6,13 +6,15 @@ const { Router } = require("express");
 const usersRouter = require("./users.routes");
 const movieNotesRouter = require("./movienotes.routes");
 const movieTagsRouter = require("./movietags.routes");
+const sessionsRouter = require("./sessions.routes");
 
-// Criando um objeto routes, instânciando a class Router do módulo Express
+
 const routes = Router();
 
 // Usando o método use da classe Router, que passa como argumento a rota /users e o roteador usersRouter
 // todas as rotas defininadas no objeto usersRouter serão acessadas através do caminho /users
 routes.use("/users", usersRouter);
+routes.use("/sessions", sessionsRouter);
 routes.use("/notes", movieNotesRouter);
 routes.use("/tags", movieTagsRouter);
 

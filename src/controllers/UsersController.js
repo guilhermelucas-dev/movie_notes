@@ -32,14 +32,14 @@ class UsersController  //classe criada para controlar as requisições e respost
       password: hashedPassword
    });
 
-    response.status(201).json();
+    return response.status(201).json();
   }
   
   async update(request, response) {
     const {name, email, password, old_password} = request.body;
-    const {id} = request.params;
+    const user_id = request.user.id;
 
-    const user = await knex('users').select('*').where('id', id).first();
+    const user = await knex('users').select('*').where('id', user_id).first();
 
     if (!user) {
       throw new AppError("Usuário não encontrado");
@@ -69,8 +69,6 @@ class UsersController  //classe criada para controlar as requisições e respost
       user.password = await hash(password, 8);
     }
 
-    const userId = id;
-
     const userUpdate = {
       name: user.name,
       email: user.email,
@@ -78,7 +76,7 @@ class UsersController  //classe criada para controlar as requisições e respost
       updated_at: knex.fn.now()
     };
 
-    await knex('users').where('id', userId).update(userUpdate);
+    await knex('users').where('id', user_id).update(userUpdate);
 
     return response.status(200).json();
   }
